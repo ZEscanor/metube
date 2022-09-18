@@ -5,11 +5,13 @@ import { CheckCircle } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
 import { demoProfilePicture } from "../utils/constants";
+
+import { useParams } from "react-router-dom";
 import { borderRadius } from "@mui/system";
 
 const ChannelCard = ({channelDetail, marginTop}) => {
-
-  console.log(channelDetail)
+const {id} = useParams();
+  const fallbackId = id // if there is a case where we return undefined will reload the current page
   return (
     <Box sx= {{boxShadow: 'none', borderRadius: '20px'
     ,display: 'flex', 
@@ -19,7 +21,8 @@ const ChannelCard = ({channelDetail, marginTop}) => {
     height: '326px',
     margin: 'auto',
     marginTop,}}> 
-      <Link to= {`/channel/${channelDetail?.id?.channelId}`}>
+      <Link to= {`/channel/${channelDetail?.id?.channelId || fallbackId}`}> 
+      {/* Fixed undefined return loop when clicking on channel again */}
         <CardContent sx={{display: 'flex', 
         flexDirection: 'column', 
         justifyContent: 'center', 
