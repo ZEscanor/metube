@@ -4,11 +4,11 @@ import { Typography, Card, CardContent, CardMedia } from "@mui/material";
 
 import {CheckCircle} from '@mui/icons-material';
 
-import { demoThumbnailUrl, demoVideoUrl, demoVideoTitle, demoChannelUrl, demoChannelTitle } from "../utils/constants";
+import {  demoVideoUrl, demoVideoTitle, demoChannelUrl, demoChannelTitle } from "../utils/constants";
 
 const VideoCard = ({video: {id: {videoId}, snippet}}) => {
   return (
-    <Card sx={{width:{xs:"100%",sm:"358px",md:'320px' }, boxShadow: 'none', borderRadius: 0}}>
+    <Card sx={{width:{xs:"300px",sm:"358px",md:'320px' }, boxShadow: 'none', borderRadius: 0}}> {/* realistically for the smaller sizes i would use %s to make it EVEN MORE RESPONSIVE but for the sake of simplicity these sizes are compatible with all devices down to IPHONE SE*/}
       <Link to= {videoId? `/video/${videoId}`: demoVideoUrl}>
       <CardMedia 
       image={snippet?.thumbnails?.high?.url} 
