@@ -100,7 +100,7 @@ const VideoDetail = () => {
         <Card sx={{backgroundColor: "#000",color: "white"}}  justifyContent= "center" alignItems= "center">
           {/* {comment.snippet.topLevelComment.id} */}
         <img  src= {comment?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl || demoProfilePicture} alt="hello " 
-        />
+         style={{borderRadius: "50%",width:"30px", height:"30px"}} />
         <Typography fontSize={"0.7rem"} fontWeight={"bold"}>         
           {comment.snippet.topLevelComment.snippet.authorDisplayName}
           </Typography> 
