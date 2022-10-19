@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 import {logo} from '../utils/constants';
 import SearchBar from "./SearchBar";
-
+// navbar component
 const Navbar = () => (
   
   <Stack direction="row" 
