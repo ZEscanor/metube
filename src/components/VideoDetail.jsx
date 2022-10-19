@@ -42,10 +42,10 @@ const VideoDetail = () => {
       UPVOTE/DOWNVOTE- OPTIONAL  would be just state but .snippet.LikeCount
       REPLYBUTTON also just state
       REPLIES .snippet.totalReplyCount
-  */
+
 
   if(!videoDetail?.snippet || !comments || !videos) return 'Loading....' // need this in order to load data or else page breaks
- 
+  
   const {snippet: {title, channelId, channelTitle}, statistics: { viewCount, likeCount} } = videoDetail;
    
   const Catvids = videos.slice(0,14)
@@ -71,7 +71,9 @@ const VideoDetail = () => {
               <CardMedia
         image= {videoDetail?.snippet?.thumbnails?.high?.url || demoProfilePicture}
          alt={title}
+
          sx={{borderRadius:'50%', height:'25px', width: '25px' , mb: 2, border: '1px solid #e3e3e3'}}/>
+
                 {channelTitle}
                 <CheckCircle sx={{fontSize: '12px', color: 'gray', ml:'5px'}}  />
               </Typography>
@@ -97,12 +99,17 @@ const VideoDetail = () => {
       {CatComments.map((comment)=> (
         <Card sx={{backgroundColor: "#000",color: "white"}}  justifyContent= "center" alignItems= "center">
           {/* {comment.snippet.topLevelComment.id} */}
+
         <img  src= {comment?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl || demoProfilePicture} alt=" " 
+
          style={{borderRadius: "50%",width:"30px", height:"30px"}} />
         <Typography fontSize={"0.7rem"} fontWeight={"bold"}>         
           {comment.snippet.topLevelComment.snippet.authorDisplayName}
           </Typography> 
+
           <Typography  fontSize={"0.5rem"} fontWeight={"bold"}>    
+  
+
           {comment.snippet.topLevelComment.snippet.textOriginal}
           </Typography>   
         </Card>
@@ -119,3 +126,18 @@ const VideoDetail = () => {
 export default VideoDetail
 
 
+/*<Stack  display="flex" direction={"column"} flexWrap='wrap' justifyContent='start' gap={2} sx={{width:{md:"300px", xs:"100%"}}}>
+{comments.map((comment)=> (
+  <Card sx={{backgroundColor: "#000",color: "white"}}  justifyContent= "center" alignItems= "center">
+    {/* {comment.snippet.topLevelComment.id} */
+//   <img  border-radius={"50%"} src= {comment?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl || demoProfilePicture} alt="hello " 
+//   />
+//   <Typography fontSize={"0.7rem"} fontWeight={"bold"}>         
+//     {comment.snippet.topLevelComment.snippet.authorDisplayName}
+//     </Typography> 
+//     <Typography  fontSize={"0.5rem"}>    
+//     {comment.snippet.topLevelComment.snippet.textOriginal}
+//     </Typography>   
+//   </Card>
+// )) }  
+// </Stack> 

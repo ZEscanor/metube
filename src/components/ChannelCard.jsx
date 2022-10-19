@@ -12,6 +12,7 @@ import { borderRadius } from "@mui/system";
 const ChannelCard = ({channelDetail, marginTop}) => {
 const {id} = useParams();
   const fallbackId = id // if there is a case where we return undefined will reload the current page
+  if(!channelDetail?.snippet) return 'Loading....'
   return (
     <Box sx= {{boxShadow: 'none', borderRadius: '20px'
     ,display: 'flex', 
