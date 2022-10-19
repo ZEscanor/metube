@@ -8,7 +8,7 @@ import {  demoVideoUrl, demoVideoTitle, demoChannelUrl, demoChannelTitle } from 
 
 const VideoCard = ({video: {id: {videoId}, snippet}}) => {
   return (
-    <Card sx={{width:{xs:"280px",sm:"358px",md:'320px' }, boxShadow: 'none', borderRadius: 0}}> {/* realistically for the smaller sizes i would use %s to make it EVEN MORE RESPONSIVE but for the sake of simplicity these sizes are compatible with all devices down to IPHONE SE*/}
+    <Card sx={{width:{xs:"280px",sm:"358px",md:'320px' }, boxShadow: 'none', borderRadius: 0}}> {/* reaalistically for the smaller sizes i would use %s to make it EVEN MORE RESPONSIVE but for the sake of simplicity these sizes are compatible with all devices down to IPHONE SE*/}
       <Link to= {videoId? `/video/${videoId}`: demoVideoUrl}>
       <CardMedia 
       image={snippet?.thumbnails?.high?.url} 
