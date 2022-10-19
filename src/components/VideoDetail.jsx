@@ -44,10 +44,8 @@ const VideoDetail = () => {
       REPLIES .snippet.totalReplyCount
 
 
-  */
-
-  if(!videoDetail?.snippet || !comments) return 'Loading....' // need this in order to load data or else page breaks
- 
+  if(!videoDetail?.snippet || !comments || !videos) return 'Loading....' // need this in order to load data or else page breaks
+  
   const {snippet: {title, channelId, channelTitle}, statistics: { viewCount, likeCount} } = videoDetail;
    
   const Catvids = videos.slice(0,14)
@@ -73,7 +71,9 @@ const VideoDetail = () => {
               <CardMedia
         image= {videoDetail?.snippet?.thumbnails?.high?.url || demoProfilePicture}
          alt={title}
-         sx={{borderRadius:'50%', height:'36px', width: '36px' , mb: 2, border: '1px solid #e3e3e3'}}/>
+
+         sx={{borderRadius:'50%', height:'25px', width: '25px' , mb: 2, border: '1px solid #e3e3e3'}}/>
+
                 {channelTitle}
                 <CheckCircle sx={{fontSize: '12px', color: 'gray', ml:'5px'}}  />
               </Typography>
@@ -99,12 +99,17 @@ const VideoDetail = () => {
       {CatComments.map((comment)=> (
         <Card sx={{backgroundColor: "#000",color: "white"}}  justifyContent= "center" alignItems= "center">
           {/* {comment.snippet.topLevelComment.id} */}
-        <img  src= {comment?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl || demoProfilePicture} alt="hello " 
+
+        <img  src= {comment?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl || demoProfilePicture} alt=" " 
+
          style={{borderRadius: "50%",width:"30px", height:"30px"}} />
         <Typography fontSize={"0.7rem"} fontWeight={"bold"}>         
           {comment.snippet.topLevelComment.snippet.authorDisplayName}
           </Typography> 
-          <Typography  fontSize={"0.5rem"}>    
+
+          <Typography  fontSize={"0.5rem"} fontWeight={"bold"}>    
+  
+
           {comment.snippet.topLevelComment.snippet.textOriginal}
           </Typography>   
         </Card>
