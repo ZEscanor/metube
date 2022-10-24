@@ -15,7 +15,10 @@ import DeveloperModeIcon from '@mui/icons-material/DeveloperMode';
 export const logo = 'https://i.ibb.co/s9Qys2j/logo.png';
 
 export const categories = [
+<<<<<<< HEAD
   { name: 'New', icon: <HomeIcon />, },
+=======
+>>>>>>> 99f485d... new component
   { name: 'Markiplier', icon: <CodeIcon />, },
   { name: 'Coding', icon: <CodeIcon />, },
   { name: 'ReactJS', icon: <CodeIcon />, },

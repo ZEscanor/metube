@@ -8,7 +8,7 @@ import {Typography, Box, Stack, Card, CardMedia} from '@mui/material';
 
 import { CheckCircle } from "@mui/icons-material";
 
-import {Videos} from './';
+import {Videos, Comments} from './';
 
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 
@@ -30,7 +30,7 @@ const VideoDetail = () => {
       .then((data) => setVideos(data.items))
 
       fetchFromAPI(`commentThreads?part=snippet&videoId=${id}&maxResults=100`)
-      .then((data) => setComments(data.items))
+      .then((data) => setComments(data.items)) 
   
   },[id]);
   /*How comments are structured relevent data from items call
@@ -43,8 +43,8 @@ const VideoDetail = () => {
       REPLYBUTTON also just state
       REPLIES .snippet.totalReplyCount
   */
-
-  if(!videoDetail?.snippet || !comments || !videos) return 'Loading....' // need this in order to load data or else page breaks
+ 
+  if(!videoDetail?.snippet ||!videos || !comments) return 'Loading....' // need this in order to load data or else page breaks
  
   const {snippet: {title, channelId, channelTitle}, statistics: { viewCount, likeCount} } = videoDetail;
    
@@ -92,22 +92,8 @@ const VideoDetail = () => {
 
       </Box>
 
+      <Comments CatComments={CatComments}/>
       
-      <Stack  direction={"column"}  flexWrap='wrap' justifyContent='start' gap={2} sx={{width:{md:"25%", xs:"100%"}}}>
-      {CatComments.map((comment)=> (
-        <Card sx={{backgroundColor: "#000",color: "white"}}  justifyContent= "center" alignItems= "center">
-          {/* {comment.snippet.topLevelComment.id} */}
-        <img  src= {comment?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl || demoProfilePicture} alt=" " 
-         style={{borderRadius: "50%",width:"30px", height:"30px"}} />
-        <Typography fontSize={"0.7rem"} fontWeight={"bold"}>         
-          {comment.snippet.topLevelComment.snippet.authorDisplayName}
-          </Typography> 
-          <Typography  fontSize={"0.5rem"} fontWeight={"bold"}>    
-          {comment.snippet.topLevelComment.snippet.textOriginal}
-          </Typography>   
-        </Card>
-      )) }
-      </Stack>
      
       </Stack>
     

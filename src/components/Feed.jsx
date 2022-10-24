@@ -12,7 +12,7 @@ import { fetchFromAPI } from "../utils/fetchFromAPI"; // call as soon as feed lo
 
 const Feed = () => {
 
-  const [selectedCategory, setSelectedCategory] = useState("New");
+  const [selectedCategory, setSelectedCategory] = useState("Markiplier");
   const [videos,setVideos] = useState([])
   
 
