@@ -83,6 +83,13 @@ a {
     height: 45vh !important;
   }
   .search-bar{
-    width:200px;
+    width:100px;
+  }
+}
+
+@media screen and (max-width: 225px) {
+  body div{
+    width:500px;
+    background-color:purple
   }
 }
