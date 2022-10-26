@@ -49,7 +49,10 @@ const VideoDetail = () => {
   const {snippet: {title, channelId, channelTitle}, statistics: { viewCount, likeCount} } = videoDetail;
    
   const Catvids = videos.slice(0,14)
-  const CatComments = comments.slice(1,50)
+  // const CatComments = comments.slice(1,50)
+  const CatComments = comments.filter(comment=> comment.snippet.topLevelComment.snippet.textOriginal.length < 300)
+  console.log(CatComments[5].snippet.topLevelComment.snippet.textOriginal.length)
+  
   //console.log(videos,Catvids)
 
   /*console.log(comments, " comment Array")
