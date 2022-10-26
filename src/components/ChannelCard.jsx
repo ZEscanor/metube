@@ -8,11 +8,12 @@ import { demoProfilePicture } from "../utils/constants";
 
 import { useParams } from "react-router-dom";
 import { borderRadius } from "@mui/system";
+import {LoadingPage} from "./";
 
 const ChannelCard = ({channelDetail, marginTop}) => {
 const {id} = useParams();
   const fallbackId = id // if there is a case where we return undefined will reload the current page
-  if(!channelDetail?.snippet) return 'Loading....'
+  if(!channelDetail?.snippet) return <LoadingPage/>
   return (
     <Box sx= {{boxShadow: 'none', borderRadius: '20px'
     ,display: 'flex', 

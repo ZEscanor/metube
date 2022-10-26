@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: black;
 }
 
 a {
@@ -87,9 +88,9 @@ a {
   }
 }
 
-@media screen and (max-width: 225px) {
-  body div{
+@media screen and (max-width: 280px) {
+  body{
     width:500px;
-    background-color:purple
+    color:red;
   }
 }
