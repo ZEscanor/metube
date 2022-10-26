@@ -4,7 +4,7 @@ import { demoProfilePicture } from "../utils/constants";
 
 const Comments = ({CatComments}) => {
   return (
-    <Stack  direction={"column"}  flexWrap='wrap' justifyContent='start' gap={2} sx={{width:{md:"25%", xs:"100%"}}}>
+    <Stack  direction={"column"}  flexWrap='wrap' justifyContent='start' gap={2} sx={{width:{md:"25%", xs:"100%"}, wordBreak:"break-all"}}>
       {CatComments.map((comment)=> (
         <Card sx={{backgroundColor: "#000",color: "white"}}  justifyContent= "center" alignItems= "center">
           {/* {comment.snippet.topLevelComment.id} */}
