@@ -8,7 +8,7 @@ import {Typography, Box, Stack, Card, CardMedia} from '@mui/material';
 
 import { CheckCircle } from "@mui/icons-material";
 
-import {Videos, Comments} from './';
+import {Videos, Comments, LoadingPage} from './';
 
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 
@@ -44,14 +44,14 @@ const VideoDetail = () => {
       REPLIES .snippet.totalReplyCount
   */
  
-  if(!videoDetail?.snippet ||!videos || !comments) return 'Loading....' // need this in order to load data or else page breaks
+  if(!videoDetail?.snippet ||!videos || !comments) return <LoadingPage/> // need this in order to load data or else page breaks
  
   const {snippet: {title, channelId, channelTitle}, statistics: { viewCount, likeCount} } = videoDetail;
    
   const Catvids = videos.slice(0,14)
   // const CatComments = comments.slice(1,50)
-  const CatComments = comments.filter(comment=> comment.snippet.topLevelComment.snippet.textOriginal.length < 300)
-  console.log(CatComments[5].snippet.topLevelComment.snippet.textOriginal.length)
+  const CatComments = comments.filter(comment=> comment.snippet.topLevelComment.snippet.textOriginal.length < 300) // There have been some spammy comments so to help with consistency we filter out comments with an overabundance of words
+  //console.log(CatComments[5].snippet.topLevelComment.snippet.textOriginal.length)
   
   //console.log(videos,Catvids)
 
@@ -61,7 +61,7 @@ const VideoDetail = () => {
     <Box minHeight= "95vh">
       <Stack direction= {{xs: 'column', md: 'row'}}>
         <Box flex={1}>
-          <Box sx={{width:{xs:'95%', md: "100%"}, position: 'sticky', top: '86px'}}>
+          <Box sx={{width:{xs:'85%', md: "100%"}, position: 'sticky', top: '86px'}}>
             <ReactPlayer url={`https//www.youtube.com/watch?v=${id}`}
            className= 'react-player' controls
           />
