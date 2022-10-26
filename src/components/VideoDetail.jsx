@@ -61,7 +61,7 @@ const VideoDetail = () => {
     <Box minHeight= "95vh">
       <Stack direction= {{xs: 'column', md: 'row'}}>
         <Box flex={1}>
-          <Box sx={{width:{xs:'85%', md: "100%"}, position: 'sticky', top: '86px'}}>
+          <Box sx={{width:{xs:'85%', md: "100%"},  top: '86px'}}>  {/* position:sticky?*/}
             <ReactPlayer url={`https//www.youtube.com/watch?v=${id}`}
            className= 'react-player' controls
           />
@@ -80,10 +80,10 @@ const VideoDetail = () => {
               </Typography>
             </Link>
             <Stack direction= "row" gap="20px" alignItems="center">
-              <Typography variant="body1" sx={{opacity:0.7}}>
+              <Typography variant="body1" >  {/* sx={{opacity:0.7}}*/}
                 {parseInt(viewCount).toLocaleString()} Views
               </Typography>
-              <Typography variant="body1" sx={{opacity:0.7}}>
+              <Typography variant="body1"> {/* sx={{opacity:0.7}}*/}
                 {parseInt(likeCount).toLocaleString()} Likes
               </Typography>
             </Stack>
