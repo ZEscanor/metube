@@ -19,7 +19,7 @@ import { demoProfilePicture } from "../utils/constants";
 
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
-  const [videos, setVideos] = useState(null)
+  const [videos, setVideos] = useState(0)
   const [comments, setComments] = useState(null)
   const {id} = useParams();
   useEffect(()=>{
@@ -28,6 +28,7 @@ const VideoDetail = () => {
 
     fetchFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video&maxResults=10`)  // given the limitations of this api max Results doesnt work, by default you get 50 results which can overpopulate
       .then((data) => setVideos(data.items))
+   
 
       fetchFromAPI(`commentThreads?part=snippet&videoId=${id}&maxResults=100`)
       .then((data) => setComments(data.items)) 
@@ -44,13 +45,12 @@ const VideoDetail = () => {
       REPLIES .snippet.totalReplyCount
   */
  
-  if(!videoDetail?.snippet ||!videos || !comments) return <LoadingPage/> // need this in order to load data or else page breaks
- 
+  if(!videoDetail?.snippet ||!videos || !comments === 0 ) return <LoadingPage/> // need this in order to load data or else page breaks
+  console.log(comments, "comments")
   const {snippet: {title, channelId, channelTitle}, statistics: { viewCount, likeCount} } = videoDetail;
    
   const Catvids = videos.slice(0,14)
-  // const CatComments = comments.slice(1,50)
-  const CatComments = comments.filter(comment=> comment.snippet.topLevelComment.snippet.textOriginal.length < 300) // There have been some spammy comments so to help with consistency we filter out comments with an overabundance of words
+  
   //console.log(CatComments[5].snippet.topLevelComment.snippet.textOriginal.length)
   
   //console.log(videos,Catvids)
@@ -86,8 +86,12 @@ const VideoDetail = () => {
               <Typography variant="body1"> {/* sx={{opacity:0.7}}*/}
                 {parseInt(likeCount).toLocaleString()} Likes
               </Typography>
+
+              
             </Stack>
+            
           </Stack>
+          
           </Box>
         </Box>
         <Box px={1} py={{md:1, xs:5}} justifyContent= "center" alignItems= "center" width={{xs: "100%", md:"350px" }} >
@@ -95,9 +99,9 @@ const VideoDetail = () => {
 
       </Box>
 
-      <Comments CatComments={CatComments}/>
+      {comments && <Comments comments={comments}/>} {/* fixed a bug where if the video had comments disabled it wont not load the page at all based on previous versions of code */}
+      {!comments && <Typography color="#fff" fontSize={"0.7rem"} fontWeight={"bold"} paddingRight={"30px"} >Comments are Disabled For This Video</Typography>}
       
-     
       </Stack>
     
     
