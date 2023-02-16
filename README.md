@@ -1,7 +1,13 @@
-Tech Stack
+A Youtube clone that allows users to search and view videos as you could in the normal youtube app
 
-RapidAPI Youtube V3 for the Youtube api // has some limitations
 
-React :)
+![metube](https://user-images.githubusercontent.com/69213231/219253694-b4c48ca1-0e17-41fe-a68f-059d9e31da53.png)
 
-Material UI
+
+
+This app uses an external Youtube API which has some limitations
+
+
+
+Tech Stack - React, Material Ui
+
