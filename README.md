@@ -1,4 +1,4 @@
-#A Youtube clone that allows users to search and view videos as you could in the normal youtube app
+# A Youtube clone that allows users to search and view videos as you could in the normal youtube app
 # Click on a video to get started
 
 
