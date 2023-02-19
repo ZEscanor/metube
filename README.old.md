@@ -1,2 +1,0 @@
-# metube
-A youtube clone
